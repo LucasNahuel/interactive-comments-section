@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import data from './data.json'
+import { useState } from 'react';
+import Comment from './components/Comment.js'
+import { ReactDOM } from 'react';
 
 function App() {
+
+  const [commentsData, setData] = useState( data.comments )
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Comments-list">
+        {
+          commentsData.map((comment) => <Comment comment={comment}></Comment>)
+        }
+      </div>
     </div>
   );
 }
