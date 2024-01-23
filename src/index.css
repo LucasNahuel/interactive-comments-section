@@ -26,10 +26,77 @@ body {
   flex-direction: column;
   margin: 3em auto;
   max-width: 900px;
-  gap: 1em;
 }
 
 .comment{
   background-color: var(--white);
-  border-radius: 1em;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.replies-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.vl-container{
+  width: 3em;
+  min-height: 100%;
+  position: relative;
+}
+
+.vl{
+  height: 100%;
+  border-left: 1px solid var(--grayish-blue);
+  position: absolute;
+  left: 50%;
+  margin-left: -1px;
+  top: 0;
+}
+
+.replies-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-votes{
+  width: 3em;
+  min-height: 100%;
+  border-radius: 0.5em;
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-body{
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+
+.avatar-img{
+  height: 2em;
+}
+
+.reply-button{
+  color: var(--moderate-blue);
+  background-color: var(--white);
+  border-style: none;
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.reply-button:hover{
+  cursor: pointer;
 }

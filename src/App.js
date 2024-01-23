@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <div className="Comments-list">
         {
-          commentsData.map((comment) => <Comment comment={comment}></Comment>)
+          commentsData.map((comment) => <Comment comment={comment} key={commentsData.indexOf(comment)} ></Comment>)
         }
       </div>
     </div>
