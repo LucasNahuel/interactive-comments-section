@@ -1,9 +1,18 @@
 import iconPlus from './images/icon-plus.svg';
 import iconMinus from './images/icon-minus.svg';
 import iconReply from './images/icon-reply.svg';
+import CommentForm from './CommentForm';
+import { useState } from 'react';
 
 function Comment(props){
 
+    const [commentBox, setCommentBox] = useState();
+
+    function toggleCommentBox(ev){
+        ev.preventDefault();
+        setCommentBox(<CommentForm/>)
+    }
+    
     return(
         <div>
 
@@ -20,7 +29,7 @@ function Comment(props){
                         <img className='avatar-img' src={require(`${ props.comment.user.image.png }`)}></img>
                         <strong>{props.comment.user.username}</strong>
                         <p style={{'color': 'var(--grayish-blue)'}}>{props.comment.createdAt}</p>
-                        <button className='reply-button'><img src={iconReply}/> Reply</button>
+                        <button className='reply-button' onClick={toggleCommentBox}><img src={iconReply}/> Reply</button>
                     </div>
                     <p>{props.comment.content}</p>
                 </div>
@@ -28,6 +37,8 @@ function Comment(props){
 
                 
             </div>
+
+            {commentBox}
 
             {props.comment.replies && props.comment.replies.length > 0 ? 
                 
