@@ -63,10 +63,11 @@ body {
 .replies-list{
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .comment-votes{
-  width: 3em;
+  max-width: 3em;
   border-radius: 0.5em;
   background-color: var(--light-gray);
   display: flex;
@@ -168,4 +169,9 @@ textarea:focus{
 p {
   text-align: left;
   margin-block: 0.5em;
+}
+
+.score{
+  font-weight: 600;
+  color: var(--moderate-blue)
 }
