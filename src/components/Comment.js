@@ -28,6 +28,29 @@ function Comment(props){
         setReplies(actualReplies);
         setReplyBox(null)
     }
+
+    function displayComment(comment){
+
+        let elementsArray = [];
+
+        let sentence = "";
+
+        comment.split(' ').forEach((word) =>{
+            if (word.startsWith('@')){
+                elementsArray.push(<p style={{'display': 'inline'}}>{sentence}</p>);
+                sentence = "";
+                elementsArray.push(<p style={{'font-weight': '600', 'color': 'var(--moderate-blue)', 'display': 'inline'}}>{word}</p>);
+            }else{
+                sentence += ' '+word;
+            }
+        });
+
+
+        elementsArray.push(<p style={{'display': 'inline'}}>{sentence}</p>);
+
+        return elementsArray;
+
+    }
     
     return(
         <div>
@@ -47,7 +70,9 @@ function Comment(props){
                         <p style={{'color': 'var(--grayish-blue)'}}>{props.comment.createdAt}</p>
                         <button className='reply-button' onClick={(e)=> {e.preventDefault() ;toggleReplyBox(props.comment.user.username);}}><img src={iconReply}/> Reply</button>
                     </div>
-                    <p>{props.comment.content}</p>
+
+                    
+                    <div style={{'text-align': 'left', 'margin-block': '1em'}}>{displayComment(props.comment.content)}</div>
                 </div>
                 
 
