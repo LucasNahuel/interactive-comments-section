@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function CommentForm(props){
 
-    const [replyText, setReplyText] = useState()
+    const [replyText, setReplyText] = useState(props.replyingUser ? '@'+props.replyingUser+' ' : null)
 
     function sendReply(){
 
