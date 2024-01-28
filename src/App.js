@@ -8,7 +8,20 @@ import CommentBox from './components/CommentForm.js'
 
 function App() {
 
-  const [commentsData, setData] = useState( data.comments )
+  const [commentsData, setData] = useState( data.comments );
+  const [commentBox, setCommentBox] = useState(<CommentBox saveReply={saveComment}></CommentBox>)
+
+  function saveComment(comment){
+    
+    console.log(comment);
+    
+    let actualComments = commentsData;
+    commentsData.push(comment);
+    setData(actualComments);
+    setCommentBox(<CommentBox saveReply={saveComment}></CommentBox>)
+
+
+  }
 
   return (
     <div className="App">
@@ -16,7 +29,7 @@ function App() {
         {
           commentsData.map((comment) => <Comment comment={comment} key={commentsData.indexOf(comment)} ></Comment>)
         }
-        <CommentBox></CommentBox>
+        {commentBox}
       </div>
     </div>
   );

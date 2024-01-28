@@ -145,7 +145,7 @@ textarea{
   font-size: inherit;
   resize: none;
   padding: 0.5em;
-  width: 100%;
+  width: -webkit-fill-available;
 }
 
 textarea:focus{
@@ -175,4 +175,48 @@ p {
 .score{
   font-weight: 600;
   color: var(--moderate-blue)
+}
+
+.you-badge{
+  color: var(--white);
+  font-size: 13px;
+  background-color: var(--moderate-blue);
+  padding: 0em .4em 0.2em .4em ;
+  margin-block: 0;
+  border-radius: 0.2em;
+}
+
+.own-comment-actions{
+  display: flex;
+  margin-left: auto;
+  gap: 1em;
+}
+
+.delete-btn{
+  background-color: var(--white);
+  border-style: none;
+  color: var(--soft-red);
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.delete-btn:hover{
+  cursor: pointer;
+}
+
+.edit-btn{
+  background-color: var(--white);
+  border-style: none;
+  color: var(--moderate-blue);
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.edit-btn:hover{
+  cursor: pointer;
 }
