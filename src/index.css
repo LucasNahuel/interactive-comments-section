@@ -44,6 +44,7 @@ body {
 }
 
 .vl-container{
+  min-width: 2em;
   width: 10em;
   min-height: 100%;
   position: relative;
@@ -219,4 +220,58 @@ p {
 
 .edit-btn:hover{
   cursor: pointer;
+}
+
+.modal-overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  inset: 0 0 0 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.modal-card{
+  background-color: white;
+  position: absolute;
+  max-width: 300px;
+  height: fit-content;
+  inset: 0 0 0 0;
+  margin: auto auto;
+  border-radius: 0.5em;
+  text-align: left;
+  padding: 0em 1.5em 1.5em 1.5em;
+}
+
+.modal-card-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top:1em;
+}
+
+.modal-card-actions button:hover{
+  cursor: pointer; 
+}
+
+.cancel-button{
+  padding: 1em 2em;
+  background-color: gray;
+  border-style: none;
+  border-radius: 0.5em;
+  color: var(--white);
+  font-weight: 600;
+  
+  height: fit-content;
+}
+
+.confirm-button{
+  padding: 1em 2em;
+  background-color: var(--soft-red);
+  border-style: none;
+  border-radius: 0.5em;
+  color: var(--white);
+  font-weight: 600;
+  
+  height: fit-content;
 }

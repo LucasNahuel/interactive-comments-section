@@ -7,14 +7,14 @@ import data from '../data.json';
 import deleteIcon from './images/icon-delete.svg';
 import editIcon from './images/icon-edit.svg';
 import EditComment from './EditComment';
-
+import ModalDialog from './ModalDialog';
 function Comment(props){
 
     const [replyBox, setReplyBox] = useState();
     const [replies, setReplies] = useState(props.comment.replies);
     const [editors, setEditors] = useState({});
     const [comment, setComment] = useState(props.comment);
-
+    const [deleteConfirmation, setDeleteConfirmation] = useState();
 
     
 
@@ -36,6 +36,13 @@ function Comment(props){
         console.log(actualReplies);
         setReplies(actualReplies);
         setReplyBox(null);
+    }
+
+    function deleteReply(reply){
+
+        let repliesFiltered = replies.filter((comment) => comment === reply);
+
+        setReplies(repliesFiltered);
     }
 
     function displayComment(comment){
@@ -70,17 +77,29 @@ function Comment(props){
     }
 
     function saveEdition(comment){
-       console.log(comment);
        setComment(comment);
         setEditors({});
     }
 
+
+    function openDeleteDialog(){
+        setDeleteConfirmation(<ModalDialog confirmDelete={deleteComment} ></ModalDialog>);
+    }
+
+    function deleteComment(){
+        setDeleteConfirmation(null);
+        
+        props.delete(props.comment);
+        setComment(null);
+    }
     
     
     return(
         <div>
+            {deleteConfirmation}
 
-            
+            {
+                comment ?
             <div className="comment">
 
                 <div className="comment-votes">
@@ -98,7 +117,7 @@ function Comment(props){
                         {comment.user.username == data.currentUser.username ?  
                         
                             <div className='own-comment-actions'>
-                                <button className='delete-btn'> <img src={deleteIcon}/> Delete</button>
+                                <button className='delete-btn' onClick={(ev) => {ev.preventDefault(); openDeleteDialog()}}> <img src={deleteIcon}/> Delete</button>
                                 <button className='edit-btn' onClick={(ev) => {ev.preventDefault(); addEditor(comment)}}> <img src={editIcon}/> Edit</button>
                             </div>
 
@@ -123,8 +142,8 @@ function Comment(props){
                 
 
                 
-            </div>
-
+            </div> : null
+            }
             {replyBox}
 
             {replies && replies.length > 0 ? 
@@ -140,13 +159,15 @@ function Comment(props){
                     <div className="replies-list">
                     { 
                         
-                        replies.map((comment) => <Comment comment={comment} key={replies.indexOf(comment)}></Comment>)
+                        replies.map((comment) => <Comment comment={comment} key={replies.indexOf(comment)} delete={deleteReply}></Comment>)
                         
                     }
                     </div>
                 </div>
             : null
             }
+
+            
         </div>
     )
 }
