@@ -68,7 +68,7 @@ body {
 }
 
 .comment-votes{
-  max-width: 3em;
+  min-width: 1.25em;
   border-radius: 0.5em;
   background-color: var(--light-gray);
   display: flex;
@@ -76,10 +76,7 @@ body {
   height: fit-content;
   padding: 0.5em;
   align-items: center;
-}
-
-.comment-votes img{
-  width: 1em;
+  gap: 0.5em;
 }
 
 .comment-votes img:hover{
@@ -274,4 +271,18 @@ p {
   font-weight: 600;
   
   height: fit-content;
+}
+
+.vote-button{
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1em;
+  width: 1em;
+  background-color: transparent;
+}
+
+.vote-button:hover{
+  cursor: pointer;
 }

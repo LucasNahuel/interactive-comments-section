@@ -32,7 +32,7 @@ function CommentForm(props){
         <div className="reply-box">
             <img src={require(`${ data.currentUser.image.png }`)} />
             <form onSubmit={(ev)=>{ev.preventDefault(); sendReply()}}>
-                <textarea rows={3} value={replyText} onChange={changeText} autoFocus={true} onFocus={() => setReplyText(props.replyingUser ? '@'+props.replyingUser+' ' : '' )}/>
+                <textarea rows={3} placeholder='Add a comment...' value={replyText} onChange={changeText} autoFocus={true} onFocus={() => setReplyText(props.replyingUser ? '@'+props.replyingUser+' ' : '' )}/>
                 <button type='submit' className='reply-btn-filled'>REPLY</button>
             </form>
         </div>

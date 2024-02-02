@@ -40,7 +40,9 @@ function Comment(props){
 
     function deleteReply(reply){
 
-        let repliesFiltered = replies.filter((comment) => comment === reply);
+        let repliesFiltered = replies.filter((comment) => comment !== reply);
+
+        console.log(repliesFiltered);
 
         setReplies(repliesFiltered);
     }
@@ -89,9 +91,23 @@ function Comment(props){
     function deleteComment(){
         setDeleteConfirmation(null);
         
-        props.delete(props.comment);
         setComment(null);
     }
+
+    function upvote(){
+
+        let upvotedComment = {...comment};
+        upvotedComment.score = props.comment.score+1;
+        setComment(upvotedComment);
+
+    }
+
+    function downvote(){
+        let downvotedComment = {...comment};
+        downvotedComment.score = props.comment.score-1;
+        setComment(downvotedComment);
+    }
+
     
     
     return(
@@ -103,9 +119,9 @@ function Comment(props){
             <div className="comment">
 
                 <div className="comment-votes">
-                    <img src={iconPlus} />
+                    <button className='vote-button' onClick={(ev)=>{ev.preventDefault(); upvote()}}><img src={iconPlus} /></button>
                     <p className='score'>{comment.score}</p>
-                    <img src={iconMinus}/>
+                    <button className='vote-button' onClick={(ev)=>{ev.preventDefault(); downvote()}}><img src={iconMinus}/></button>
                 </div>
                 <div className="comment-body">
                     <div className='comment-header'>
